@@ -5,6 +5,7 @@ namespace NodeInserts
 {
     internal class Program
     {
+        //
         public static bool IsThere(Node<ShabatRecievers> node, int day, int month, int year)
         {
             Node <ShabatRecievers> p = node;
