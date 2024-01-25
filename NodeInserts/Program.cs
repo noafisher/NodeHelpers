@@ -34,6 +34,43 @@ namespace NodeInserts
 
             p.SetNext(p.GetNext().GetNext());
         }
+
+        public static int HowManyPossible(Node<Domino> lst, Domino D)
+        {
+            Node<Domino> p = lst;
+            int counter = 0;
+            while (p != null)
+            {
+                if (p.GetValue().GetLeftNum() == D.GetRightNum() || p.GetValue().GetRightNum() == D.GetLeftNum())
+                { 
+                    counter++;
+                    p = p.GetNext();
+                }
+
+                else
+                    p = p.GetNext();
+            }
+
+            return counter;
+        }
+
+        public static string Winner(Node<Participate> lst )
+        {
+            string winnerName = "";
+            double max = 0; 
+            Node<Participate> p = lst;  
+            while (p != null)
+            {
+                if (p.GetValue().Decrease() > max)
+                {
+                    max = p.GetValue().Decrease();
+                    winnerName = p.GetValue().GetName();
+                }
+
+                p= p.GetNext();
+            }
+            return winnerName;
+        }
         static void Main(string[] args)
         {
             Node<ShabatRecievers> shabatShalom = new Node<ShabatRecievers>(new ShabatRecievers("Shiri","Shira",18,1,2024));
@@ -45,5 +82,6 @@ namespace NodeInserts
 
 
         }
+
     }
 }
